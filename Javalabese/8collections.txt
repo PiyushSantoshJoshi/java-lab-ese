@@ -1,0 +1,47 @@
+package piyushprac;
+
+import java.util.*;
+
+public class collections2 {
+
+	public static void main(String[] args) {
+		String std_name,std_id;
+		ArrayList <String> Studs= new ArrayList<>();
+		
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Your Course Id: ");
+		String crs_id=sc.next();
+		
+		System.out.println("Enter Your Course name: ");
+		String crs_name=sc.next();
+		
+		System.out.println("Enter no. of students: ");
+		int no_studs = sc.nextInt();
+		
+		Studs.add("\nCourse Id is : "+crs_id);
+		Studs.add("\nCourse name is : "+crs_name);
+		Studs.add("\nTotal no of students : " + no_studs);
+		
+		for(int i=0;i<no_studs;i++) {
+			System.out.println("Student name is : ");
+			std_name=sc.next();
+			System.out.println("Student Id is : ");
+			std_id=sc.next();
+			
+			Studs.add("\nStudent name is : "+std_name+"\nStudent ID :"+std_id);
+			
+		}
+		
+		System.out.println("Size of Studs is : "+Studs.size());
+		
+		for(String i : Studs) {
+			System.out.print(i);
+		}
+		
+		Studs.set(3,"Piyush");
+		for(String i : Studs) {
+			System.out.print(i);
+		}
+	}
+
+}

@@ -1,0 +1,69 @@
+package piyushprac;
+
+public class inhabsint2 {
+
+	public static void main(String[] args) {
+		
+//		Person p1=new Person("Piyush",20);
+//		p1.display_info();
+		//single inheritance
+//		Student s1=new Student("Tiyush",21,1234,"maths");
+//		s1.display_info();
+//		s1.Student_enroll();
+//		Multilevel Inheritance
+		GraduateStudent s2=new GraduateStudent("Piyush",20,1234,"Science");
+		s2.research_topic("Chemical");
+		s2.Conduct_research();
+		
+	}
+
+}
+
+class Person{
+	String name;
+	int age;
+	
+	public Person(){
+		
+	}
+	public Person(String n,int a){
+		this.name=n;
+		this.age=a;
+	}
+	public void display_info() {
+		System.out.println("This person name is "+name+" and his age is "+age);
+	}
+}
+
+class Student extends Person{
+	int student_id;
+	String major;
+	String name;
+	int age;
+	
+	Student(String n,int a,int sd,String m){
+		super(n,a);
+		this.student_id=sd;
+		this.major=m;
+		
+	}
+	public void Student_enroll() {
+		display_info();
+		System.out.println(student_id+" "+major);
+	}
+}
+
+class GraduateStudent extends Student{
+	String Topic;
+	
+	GraduateStudent(String n,int a,int sd,String m){
+		super(n,a,sd,m);
+	}
+	public void research_topic(String T) {
+		this.Topic=T;
+	}
+	public void Conduct_research() {
+		Student_enroll();
+		System.out.println("Student is conducting research on "+Topic);
+	}
+}

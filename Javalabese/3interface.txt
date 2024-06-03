@@ -1,0 +1,71 @@
+package piyushprac;
+
+
+public class inhabsint3 {
+
+	public static void main(String[] args) {
+		
+		fullBodyWorkout s1=new fullBodyWorkout();
+		s1.WorkoutProgram();
+	}
+
+}
+
+interface CardioWorkOut{
+	
+	public String getWorkoutName();
+	public int getDurationMinutes();
+	public void displayWorkoutDetails();
+	
+}
+
+interface StrengthTraining{
+	public String getEquipmentUsed(); 
+	public String getInstructorName(); 
+	public void displayStrengthTrainingDetails();
+
+}
+
+class fullBodyWorkout implements CardioWorkOut,StrengthTraining {
+	String name,eqname,insname;
+	int dmins;
+	
+	fullBodyWorkout(){
+		this.name="Running";
+		this.eqname="Dumble";
+		this.insname="Mr.Piyush";
+		this.dmins=30;
+	}
+	fullBodyWorkout(String n,String eqn,String insname,int dm){
+		
+		this.name=n;
+		this.eqname=eqn;
+		this.insname=insname;
+		this.dmins=dm;
+		
+	}
+	public String getWorkoutName() {//you always must declare public to access interfaces
+		return name;
+	}
+	public int getDurationMinutes() {
+		return dmins;
+		
+	}
+	public void displayWorkoutDetails() {
+		System.out.println("Today's Cardio exercise "+name+".\nTotal Duration "+dmins+"mins.");
+	}
+    public String getEquipmentUsed() {
+		return eqname;
+	}
+	public String getInstructorName() {
+		return insname;
+	}
+	public void displayStrengthTrainingDetails() {
+		System.out.println("Today's Strength Training Workout equipment include "+eqname+".\nInstructor name "+insname+".");
+	}
+	public void WorkoutProgram(){
+		System.out.println("Todays Workout Program include :");
+		displayWorkoutDetails();
+		displayStrengthTrainingDetails();
+	}
+}

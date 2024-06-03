@@ -1,0 +1,37 @@
+package piyushprac;
+
+public class pae2 {
+
+	public static void main(String[] args) {
+		
+		car s1=new car();
+		s1.engine();
+		
+		truck s2=new truck();
+		s2.engine();
+		
+	}
+
+}
+
+class car extends Vehicle{
+	@Override
+	public void engine() {
+		
+		System.out.println("Car has Good Engine.");
+		
+	}
+}
+
+class truck extends Vehicle{
+	@Override
+	public void engine() {
+			
+			System.out.println("Truck has Bad Engine.");
+			
+		}
+}
+
+abstract class Vehicle{
+	abstract public void engine();
+}

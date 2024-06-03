@@ -1,0 +1,112 @@
+package piyushprac;
+
+import java.util.*;
+
+public class th1Q4 {
+
+	public static void main(String[] args) {
+//		ThreadAttendance t1=new ThreadAttendance("12th");
+//		ThreadAttendance t2=new ThreadAttendance("10th");
+//		
+//		t1.start();
+//		t2.start();
+		ThreadAttendance t1=new ThreadAttendance("12th");
+		Thread t3= new Thread(t1);
+		
+		Thread t4= new Thread(t1);
+		
+		t3.start();
+		t4.start();
+	}
+
+}
+
+//class ThreadAttendance extends Thread{
+//	String clname, Stname, A;
+//	ThreadAttendance(String clname){
+//		this.clname=clname;
+//		System.out.println("Mark Attendance for class "+clname);
+//		
+//		
+//		
+//		
+//	}
+//	public void run(){
+//        int i=1;
+//        Scanner sc= new Scanner(System.in);
+//		while(i<60) {
+//			if(i!=1) {
+//				System.out.println("Mark Attendance for class "+clname);
+//			}
+//			System.out.println("Enter Student name:");
+//			Stname=sc.next();
+//			System.out.println("Presenty of "+Stname+" Day 1 ");
+//			A=sc.next();
+//			System.out.println("Presenty of "+Stname+" Day 2 ");
+//			A=sc.next();
+//			System.out.println("Presenty of "+Stname+" Day 3 ");
+//			A=sc.next();
+//			try {
+//				System.out.println("Class:"+clname+"\nStudent name:"+Stname+"\nLast Attendance:"+A);
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
+//			
+//			i++;
+//			}
+//		
+//	}
+//	public void markAttendance() {
+//		Scanner sc= new Scanner(System.in);
+//		System.out.println("Attendance:");
+//		A=sc.next();
+//	}
+//}
+class ThreadAttendance implements Runnable{
+	String clname, Stname, A;
+	ThreadAttendance(String clname){
+		this.clname=clname;
+		System.out.println("Mark Attendance for class "+clname);
+		
+		
+		
+		
+	}
+	public void run(){
+        int i=1;
+        Scanner sc= new Scanner(System.in);
+		while(i<60) {
+			if(i!=1) {
+				System.out.println("Mark Attendance for class "+clname);
+			}
+			System.out.println("Enter Student name:");
+			Stname=sc.next();
+			System.out.println("Presenty of "+Stname+" Day 1 ");
+			A=sc.next();
+			System.out.println("Presenty of "+Stname+" Day 2 ");
+			A=sc.next();
+			System.out.println("Presenty of "+Stname+" Day 3 ");
+			A=sc.next();
+			try {
+				System.out.println("Class:"+clname+"\nStudent name:"+Stname+"\nLast Attendance:"+A);
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			i++;
+			}
+		
+	}
+	public void markAttendance() {
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Attendance:");
+		A=sc.next();
+	}
+}
+

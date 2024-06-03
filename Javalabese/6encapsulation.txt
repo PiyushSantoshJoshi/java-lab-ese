@@ -1,0 +1,40 @@
+package piyushprac;
+
+
+public class pae3 {
+
+	public static void main(String[] args) {
+		
+		
+		Employee p1=new Employee(12,"Piyush","Joshi","02/08/2003",3000);
+		p1.calculateYearlyBonus();
+		p1.empDetails();
+		
+
+	}
+
+}
+
+class Employee{
+	private int employeeId;
+	private String firstName;
+	private String lastName;
+	private String dateOfBirth; 
+	private int salary,bonus; 
+	
+	Employee(int e_id,String fname,String lname,String dob,int sal){
+		employeeId=e_id;;
+		firstName=fname;
+		lastName=lname;
+		dateOfBirth=dob; 
+		salary=sal;
+		
+	}
+	public int calculateYearlyBonus() {
+		bonus=salary+3000;
+		return bonus;
+	}
+	public void empDetails(){
+		System.out.println("Employee name :"+firstName+" "+lastName+"\nDate of Birth: "+dateOfBirth+"\nSalary of Employee: "+salary+"\nYearly Bonus will be : "+bonus);
+	}
+}

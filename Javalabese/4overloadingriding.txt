@@ -1,0 +1,74 @@
+package piyushprac;
+
+public class pae1 {
+
+	public static void main(String[] args) {
+		
+		SavingsAccount p1=new SavingsAccount();
+		p1.diposit(5000);
+		p1.diposit(5000);
+		p1.diposit(5000);
+		p1.withdraw(1000);
+		p1.withdraw(1000);
+		
+		CheckingAccount p2=new CheckingAccount();
+		p2.diposit(5000);
+		p2.diposit(5000);
+		p2.diposit(5000);
+		p2.withdraw(1000);
+		p2.withdraw(1000);
+		p2.DisplayBal();
+		// Polymorphism Concept
+//		SavingsAccount p1=new SavingsAccount();
+//		p1.diposit(5000);
+//		p1.withdraw(1000);
+//		CheckingAccount p2=new CheckingAccount();
+//		p2.diposit(5000);
+//		p2.withdraw(1000);
+	}
+
+}
+
+class Account{
+	public int n;
+	public void diposit(int n) {
+		this.n+=n;
+		System.out.println("Deposited Bal in Savings Account: "+this.n);
+	}
+	public void withdraw(int w) {
+		this.n=n-w;
+		System.out.println("Current Bal: "+n);
+	}
+	
+}
+
+//Method Overloading Class
+class SavingsAccount extends Account{
+	
+	public void withdraw(int w,String reason) {
+		this.n=n-w;
+		System.out.println("Reason of Withdrawal : "+reason);
+		System.out.println("Current Bal: "+n);
+	}
+	
+	
+}
+//Method Overriding Class
+class CheckingAccount extends Account{
+	public void diposit(int n) {
+		this.n+=n;
+		System.out.println("Deposited Bal in Checking Account: "+this.n);
+		
+	}
+	public void withdraw(int w) {
+		this.n=n-w;
+		System.out.println("Available Bal: "+n);
+	}
+	public void DisplayBal() {
+		System.out.println("Available Bal: "+n);
+	}
+}
+
+//overdraft protection means the account should not return a null value 
+//or withdrawal must not initiate for unavailable amount of bal in the account
+
