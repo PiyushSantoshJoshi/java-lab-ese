@@ -1,0 +1,89 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+public class Students {
+	public int id;
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/students";
+        String username = "root";
+        String password = "root1234";
+        Connection con = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+            if (con != null) {
+                System.out.println("Connection has been made successfully");
+                insertStudent(con, 1, "Soham");
+                deleteStudent(con,2);
+                displayStudents(con,1);
+                displaywholeStudents(con);
+            } else {
+                System.out.println("Connection has not been made");
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println("MySQL JDBC Driver not found. Include it in your library path.");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void insertStudent(Connection con, int id, String name) {
+        String insertQuery = "INSERT INTO student_details (Student_Id, Name) VALUES (?, ?)";
+        try  {
+        	PreparedStatement prepared = con.prepareStatement(insertQuery);
+            prepared.setInt(1, id);
+            prepared.setString(2, name);
+            prepared.executeUpdate();
+            System.out.println("Student inserted successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void deleteStudent(Connection con, int id) {
+    	String deleteQuery=" Delete from student_details where  Student_Id=?";
+    	try{
+    		PreparedStatement prepared = con.prepareStatement(deleteQuery);
+    		prepared.setInt(1,id);
+    		prepared.executeUpdate();
+    	}
+    	catch(SQLException e){
+    		e.printStackTrace();
+    	}
+    }
+    
+    private static void displayStudents(Connection con, int id) {
+        String select = "SELECT * FROM student_details WHERE Student_Id=?";
+        try {
+            PreparedStatement prepared = con.prepareStatement(select);
+            prepared.setInt(1, id);
+            ResultSet result = prepared.executeQuery();
+            while (result.next()) {
+                id = result.getInt("Student_Id");
+                String name = result.getString("Name");
+                System.out.println("ID: " + id + ", Name: " + name);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void displaywholeStudents(Connection con) {
+        String select = "SELECT * FROM student_details";
+        try {
+            PreparedStatement prepared = con.prepareStatement(select);
+            ResultSet result = prepared.executeQuery();
+            while (result.next()) {
+                int id = result.getInt("Student_Id");
+                String name = result.getString("Name");
+                System.out.println("ID: " + id + ", Name: " + name);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
